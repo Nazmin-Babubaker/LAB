@@ -1,0 +1,367 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1A120B;
+    --secondary-color: #3C2A21;
+    --accent-color: #D5CEA3;
+    --background-color: #E5E5CB;
+    --text-color: #1A120B;
+    --light-text: #E5E5CB;
+    --border-color: #D5CEA3;
+    --hover-color: #3C2A21;
+    --card-background: #E5E5CB;
+}
+
+[data-theme="dark"] {
+    --primary-color: #1A120B;
+    --secondary-color: #3C2A21;
+    --accent-color: #D5CEA3;
+    --background-color: #1A120B;
+    --text-color: #E5E5CB;
+    --light-text: #E5E5CB;
+    --border-color: #D5CEA3;
+    --hover-color: #D5CEA3;
+    --card-background: #3C2A21;
+}
+
+body {
+    font-family: "Poiret One", cursive;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+/* Navigation */
+.navbar {
+    background-color: var(--primary-color);
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-brand {
+    color: var(--light-text);
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo-link {
+    color: var(--light-text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.logo-link:hover {
+    color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.logo-link i {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+}
+
+.logo-link span {
+    font-family: "Poiret One", cursive;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--hover-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: var(--primary-color);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1001;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    background: var(--secondary-color);
+    color: var(--light-text);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Sections */
+.section {
+    padding: 5rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Home Section */
+#home {
+    background-color: var(--background-color);
+    text-align: center;
+}
+
+#home h1 {
+    font-family: "Merriweather", serif;
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] #home h1 {
+    color: var(--accent-color);
+}
+
+#home h1:hover {
+    transform: scale(1.02);
+}
+
+#home p {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--text-color);
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
+
+/* Section Headers */
+.section h2 {
+    font-family: "Merriweather", serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* Cards */
+.project-grid,
+.people-grid,
+.faculty-grid,
+.internship-opportunities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card,
+.person-card,
+.faculty-card,
+.internship-card {
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover,
+.person-card:hover,
+.faculty-card:hover,
+.internship-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-color);
+}
+
+/* Faculty Cards */
+.faculty-card {
+    text-align: center;
+}
+
+.faculty-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+/* Cards */
+.project-card h3,
+.person-card h3,
+.faculty-card h3,
+.internship-card h3 {
+    font-family: "Merriweather", serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.project-card p,
+.person-card p,
+.faculty-card p,
+.internship-card p {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+/* Contact Section */
+.contact-content {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.contact-item {
+    background: var(--card-background);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-color);
+}
+
+.contact-item i {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.contact-item h3 {
+    font-family: "Merriweather", serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.contact-item p {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    padding: 2rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: var(--light-text);
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-item {
+        padding: 1.5rem;
+    }
+    
+    .section {
+        padding: 3rem 1rem;
+    }
+    
+    #home h1 {
+        font-size: 2rem;
+    }
+} 
